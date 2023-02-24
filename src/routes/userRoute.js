@@ -7,6 +7,7 @@ userRoute.post("/create",UserController.createUser);
 userRoute.get("/all",UserController.getAllUsers);
 userRoute.get("/:id",UserController.getSingleUser);
 userRoute.delete("/delete/:id",UserController.deleteUser);
-userRoute.put("/create",UserController.updateUser);
+userRoute.put("/update/:id",UserController.updateUser);
+userRoute.post("/login",UserController.login);
 
 export default userRoute;
