@@ -19,7 +19,6 @@ class UserController{
     static async getSingleUser(req,res){
         try {
             const user = await User.findByPk(req.params.id);
-            console.log(user);
             res.status(200).json({status:"success",data:user.toJSON()});
         } catch (error) {
             res.status(500).json({status:"error",error:error.message});

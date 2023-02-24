@@ -2,14 +2,17 @@ import express from "express";
 import dotenv from "dotenv";
 import { sequelize } from "./database/models"
 
-import userRoute from "./routes/userRoute"
+import userRoute from "./routes/userRoute";
+import todoRoute from "./routes/todoRoute";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 
-( async () => await sequelize.sync({ force: true,alter:true }));
+sequelize.sync({alter:true})
+.then(() => console.log("sync"))
+.catch(error => console.log("error"))
 
 const connectDb = async () =>{
     try {
@@ -30,3 +33,4 @@ app.listen(port,() =>{
 connectDb();
 
 app.use("/user",userRoute);
+app.use("/todo",todoRoute);
